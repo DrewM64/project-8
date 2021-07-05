@@ -14,6 +14,10 @@ fetch(urlAPI)
     .then(displayEmployees)
     .catch(err => console.log(err))
 
+/*
+displayEmployees() creates .card divs using data from the API
+and uses them to populate the .grid-container
+*/
 function displayEmployees(employeeData) {
     employees = employeeData;
     // store the employee HTML as we create it
@@ -39,6 +43,9 @@ function displayEmployees(employeeData) {
     gridContainer.innerHTML = employeeHTML;
 }
 
+/*
+displayModal() creates the card seen on the overlay based on the selected employee
+*/
 function displayModal(index) {
     // use object destructuring make our template literal cleaner
     let { name, dob, phone, email, location: { city, street, state, postcode
@@ -61,6 +68,7 @@ function displayModal(index) {
     modalContainer.innerHTML = modalHTML;
 }
 
+// Display the overlay card when a card is clicked
 gridContainer.addEventListener('click', e => {
     // make sure the click is not on the gridContainer itself
     if (e.target !== gridContainer) {
@@ -71,6 +79,7 @@ gridContainer.addEventListener('click', e => {
     }
 });
 
+// Close the overlay
 modalClose.addEventListener('click', () => {
     overlay.classList.add("hidden");
     });
